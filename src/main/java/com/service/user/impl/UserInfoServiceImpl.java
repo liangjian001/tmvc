@@ -1,4 +1,4 @@
-package com.serviceimpl.user;
+package com.service.user.impl;
 
 import java.util.List;
 
@@ -7,11 +7,11 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.entities.user.UserInfo;
-import com.service.user.UserService;
+import com.service.user.UserInfoService;
 
-@Service("userService")
+@Service("userInfoService")
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)//容器不为这个方法开启事务

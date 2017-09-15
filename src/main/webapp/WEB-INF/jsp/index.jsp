@@ -9,5 +9,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <h2>首页=<%=basePath %></h2>
 <h2><a href="<%=basePath %>user/getUserList.shtml">用户管理</a></h2>
+<h2><a href="<%=basePath %>user/getUserInfo.shtml">用户信息</a></h2>
 </body>
 </html>

@@ -23,7 +23,12 @@ public class CommonMessage {
     /** 
      * 消息实体bean 
      */  
-    private Object message;  
+    private Object message;
+    
+    /**
+     * 消息说明
+     */
+    private String comments;
   
     public String getSource() {  
         return source;  
@@ -58,7 +63,15 @@ public class CommonMessage {
         this.message = message;  
     }  
   
-    @Override  
+    public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+
+	@Override  
     public String toString() {  
         return ToStringBuilder.reflectionToString(this,  
                 ToStringStyle.DEFAULT_STYLE);  

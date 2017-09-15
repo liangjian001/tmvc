@@ -67,7 +67,7 @@
 	<!-- exchange queue binging key 绑定 -->  
     <rabbit:topic-exchange id="message-exchange" name="message-exchange" durable="true" auto-delete="false" declared-by="connectAdmin">  
         <rabbit:bindings>  
-            <rabbit:binding queue="message_queue" pattern="message.*" />  
+            <rabbit:binding queue="message_queue" pattern="resultinfo.*" />  
         </rabbit:bindings>  
     </rabbit:topic-exchange>
 
@@ -91,9 +91,9 @@
     </bean>
     
     <!-- 默认消息处理类，可以重写 -->  
-    <bean id="messageHandler" class="com.rabbitmq.MessageHandler"></bean>  
+	<bean id="messageHandler" class="com.rabbitmq.MessageHandler"></bean>
       
-    <!-- 用于消息的监听的代理类MessageListenerAdapter -->    
+    <!-- 用于消息的监听的代理类MessageListenerAdapter -->
     <bean id="messageQueueListenerAdapter"    
         class="org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter">    
         <constructor-arg ref="messageHandler" />    

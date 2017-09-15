@@ -13,7 +13,7 @@ public class MessageHandler{
       
     public void handleMessage(CommonMessage message) {  
         try{  
-            System.out.println("收到消息...." + message);  
+            System.out.println("消费者tmvc收到消息...." + message);  
         }catch(Exception e){  
             e.printStackTrace();  
         }  

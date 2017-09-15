@@ -14,7 +14,7 @@
 	<!-- 设置Spring容器加载所有的配置文件的路径 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring-common.xml,classpath:spring-mybatis.xml</param-value>
+		<param-value>classpath:spring/spring-common.xml</param-value>
 	</context-param>
 
 	<!-- 配置SpringMVC核心控制器 -->
@@ -24,7 +24,7 @@
 		<!-- 配置初始配置化文件,前面contextConfigLocation看情况二选一 -->  
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:spring-mvc.xml</param-value>
+			<param-value>classpath:spring/spring-mvc.xml</param-value>
 		</init-param>
 		<!-- 启动加载一次 -->  
 		<load-on-startup>1</load-on-startup>
