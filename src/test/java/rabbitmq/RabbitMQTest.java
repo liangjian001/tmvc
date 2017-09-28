@@ -17,7 +17,7 @@ public class RabbitMQTest {
   
     @Before
     public void setUp() throws Exception {  
-        context = new ClassPathXmlApplicationContext("spring-common.xml");  
+        context = new ClassPathXmlApplicationContext("spring/spring-common.xml");
     }  
   
     @Test  

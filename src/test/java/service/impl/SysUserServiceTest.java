@@ -13,14 +13,14 @@ import com.service.user.SysUserService;
 import base.BaseTest;
 
 public class SysUserServiceTest extends BaseTest {
-	@Autowired
-	private SysUserService sysUserService;
+	@Autowired()
+	private SysUserService sysUserServices;
 	
 	@SuppressWarnings("unchecked")
 	@Test
 	public void getUserListDateTest(){
 		SysUserExample example = new SysUserExample();
-		ResultInfo resultInfo = sysUserService.getUserListData(example);
+		ResultInfo resultInfo = sysUserServices.getUserListData(example);
 		if (resultInfo.getResultFlag()){
 			List<SysUser> list = (List<SysUser>) resultInfo.getResultObject();
 			System.out.println("查询到的数据条数："+list.size());

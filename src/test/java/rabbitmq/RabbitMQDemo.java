@@ -12,7 +12,7 @@ import com.rabbitmq.CommonMessage;
 import com.rabbitmq.MessageSender;  
   
 @RunWith(SpringJUnit4ClassRunner.class)  
-@ContextConfiguration("classpath:spring-rabbitmq.xml")  
+@ContextConfiguration("classpath:spring/spring-rabbitmq.xml")
 public class RabbitMQDemo {  
   
     @Resource  
