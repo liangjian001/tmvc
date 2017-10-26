@@ -36,18 +36,18 @@
     </bean>  
     
     <!-- spring-rabbit使用1.6版本，spring 4.2以上才可以支持使用注解方式配置 -->
-	<!--配置connection-factory，指定连接rabbit server参数-->
-	<rabbit:connection-factory id="connectionFactory" addresses="10.1.39.62:5672" virtual-host="test_host" 
-		username="user01" password="123456" /> 
+	<!--配置connection-factory，指定连接rabbit server参数host和port可以一块写成：addresses="10.1.39.62:5672"-->
+	<rabbit:connection-factory id="connectionFactory" host="${rmq.host}" port="${rmq.port}" virtual-host="${rmq.virtualHost}" 
+		username="${rmq.username}" password="${rmq.password}" /> 
 		
 	<!-- 测试对比 -->
 	<bean id="connectionFactory2"  class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">    
 		<constructor-arg value="localhost" />        
-		<property name="host" value="10.1.39.62" />
-        <property name="port" value="5672" />
-        <property name="username" value="user01" />
-        <property name="password" value="123456" />
-        <property name="virtualHost" value="test_host" />
+		<property name="host" value="${rmq.host}" />
+        <property name="port" value="${rmq.port}" />
+        <property name="username" value="${rmq.username}" />
+        <property name="password" value="${rmq.password}" />
+        <property name="virtualHost" value="${rmq.virtualHost}" />
         <property name="publisherConfirms" value="true"/>
         <property name="publisherReturns" value="true"/>
     </bean>
@@ -85,7 +85,7 @@
     <bean id="rabbitTemplate" class="org.springframework.amqp.rabbit.core.RabbitTemplate">    
         <constructor-arg ref="connectionFactory2"></constructor-arg>
         <property name="exchange" value="message-exchange" />
-        <property name="routingKey" value="message.tonson" />
+        <property name="routingKey" value="resultinfo.*" />
         <property name="queue" value="message_queue" />
         <property name="messageConverter" ref="serializerMessageConverter" />
     </bean>
@@ -101,15 +101,22 @@
         <property name="messageConverter" ref="jsonMessageConverter"></property>    
     </bean>   
       
-    <!-- 监听容器 -->  
+    <!-- rabbitmq监听容器 -->  
     <rabbit:listener-container  
         connection-factory="connectionFactory" acknowledge="auto" task-executor="taskExecutor">  
         <rabbit:listener queues="message_queue" ref="messageQueueListenerAdapter" />  
     </rabbit:listener-container>
     
+    <!-- 用于消息的监听的容器类SimpleMessageListenerContainer,监听队列  queues可以传多个    与上面对比
+    <bean id="listenerContainer"  class="org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer">    
+        <property name="queues" ref="queue"></property>    
+        <property name="connectionFactory" ref="connectionFactory"></property>    
+        <property name="messageListener" ref="messageListenerAdapter"></property>    
+    </bean>
+    --> 
+
     <bean id="messageSender" class="com.rabbitmq.MessageSender">    
          <property name="amqpTemplate" ref="amqpTemplate"></property>    
-    </bean>  
-
+    </bean>
 	
 </beans>
