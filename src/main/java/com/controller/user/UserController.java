@@ -71,4 +71,9 @@ public class UserController {
 	     messageSender.sendDataToQueue(message);
 		return "user/user";
 	}
+	
+	@RequestMapping(value="/deleteUser")
+	public String deleteUser(){
+		return "";
+	}
 }
