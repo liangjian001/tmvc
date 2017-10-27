@@ -17,7 +17,8 @@ public class RabbitMQDemo {
   
     @Resource  
     private MessageSender messageSender;  
-      
+    
+    //测试消息发送
     @Test  
     public void testSendMessage(){
         CommonMessage message = new CommonMessage();
