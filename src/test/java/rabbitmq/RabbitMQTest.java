@@ -32,7 +32,6 @@ public class RabbitMQTest {
             } catch (InterruptedException e) {  
                 e.printStackTrace();  
             }  
-  
         }  
     }  
 }
